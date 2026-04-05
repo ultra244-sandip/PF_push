@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Independent Pros | Digital Push</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.30;
+            z-index: -1;
+        }
+
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-fade-in { animation: fadeInUp 1s ease-out forwards; }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        /* UI Elements */
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        .service-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .service-card:hover { transform: scale(1.03); background: rgba(74, 222, 128, 0.08); border-color: #4ade80; }
+
+        .hidden-detail { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease; }
+        .active-detail { max-height: 300px; opacity: 1; margin-top: 1.5rem; }
+        
+        .rotate-icon { transition: transform 0.3s ease; }
+        .active-icon { transform: rotate(45deg); color: #4ade80; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200 font-sans antialiased">
+
+    <nav class="fixed w-full z-50 px-8 py-5 flex justify-between items-center glass">
+        <div class="font-black text-2xl tracking-tighter flex items-center gap-2">
+            <span class="bg-green-500 text-slate-900 px-2 py-0.5 rounded">IP</span>
+            <span>THE <span class="text-green-400">INDEPENDENT PROS.</span></span>
+        </div>
+        <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-[0.2em]">
+            <a href="#services" class="hover:text-green-400 transition">Our Expertise</a>
+            <a href="#contact" class="hover:text-green-400 transition">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero-bg relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+        
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px]"></div>
+
+        <div class="animate-fade-in mb-8 relative">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/20 glass p-4 flex justify-center items-center overflow-hidden shadow-2xl shadow-green-500/10">
+                <img src="logo.png" alt="The Independent Pros" class="w-full h-full object-contain">
+            </div>
+        </div>
+
+        <div class="animate-fade-in" style="animation-delay: 0.2s;">
+            <h1 class="text-5xl md:text-8xl font-black mb-6 leading-[1.1] tracking-tight">
+                ALL YOU NEED IS<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 animate-pulse">DIGITAL PUSH.</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                Expert Media Production, Language Services, and Brand Identity—driven by innovation and creative excellence.
+            </p>
+            
+            <a href="#services" class="inline-block px-12 py-4 bg-green-500 hover:bg-green-400 text-slate-900 font-black rounded-full transition-all hover:shadow-[0_0_30px_rgba(74,222,128,0.3)]">
+                EXPLORE EXPERTISE
+            </a>
+        </div>
+    </header>
+
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-24">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Core Expertise</h2>
+            <div class="h-1 w-20 bg-green-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-slate-500 italic">Click any card to see how we provide your "Digital Push"</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <div class="service-card glass p-10 rounded-[2rem]" onclick="toggleDetail('media', this)">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 text-green-400">
+                            <i class="fa-solid fa-play text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Media Production</h3>
+                    </div>
+                    <i class="fa-solid fa-circle-plus text-2xl text-slate-600 rotate-icon"></i>
+                </div>
+                <div id="media" class="hidden-detail">
+                    <ul class="space-y-3 text-slate-400 border-l-2 border-green-500/30 pl-6">
+                        <li><span class="text-white">Professional Audio & Video Dubbing:</span> High-fidelity voice synchronization.</li>
+                        <li><span class="text-white">Voice-Over Services:</span> Character and corporate narration.</li>
+                        <li><span class="text-white">Mobile Video Editing:</span> Optimized content for modern social platforms.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-[2rem]" onclick="toggleDetail('lang', this)">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6 text-cyan-400">
+                            <i class="fa-solid fa-globe text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Language Services</h3>
+                    </div>
+                    <i class="fa-solid fa-circle-plus text-2xl text-slate-600 rotate-icon"></i>
+                </div>
+                <div id="lang" class="hidden-detail">
+                    <ul class="space-y-3 text-slate-400 border-l-2 border-cyan-500/30 pl-6">
+                        <li><span class="text-white">Bengali Content Creation:</span> Expert native storytelling.</li>
+                        <li><span class="text-white">Transcription & QC:</span> Accurate text conversion with QA/QC.</li>
+                        <li><span class="text-white">Translation & Subtitles:</span> Multi-language reach for your media.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-[2rem]" onclick="toggleDetail('brand', this)">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 text-green-400">
+                            <i class="fa-solid fa-palette text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Brand Identity</h3>
+                    </div>
+                    <i class="fa-solid fa-circle-plus text-2xl text-slate-600 rotate-icon"></i>
+                </div>
+                <div id="brand" class="hidden-detail">
+                    <ul class="space-y-3 text-slate-400 border-l-2 border-green-500/30 pl-6">
+                        <li><span class="text-white">Logo & Banner Design:</span> Iconic visuals for your business.</li>
+                        <li><span class="text-white">Photo Processing:</span> Professional editing and retouching.</li>
+                        <li><span class="text-white">Visual DNA:</span> Building a consistent digital aesthetic.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-[2rem]" onclick="toggleDetail('growth', this)">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6 text-cyan-400">
+                            <i class="fa-solid fa-rocket text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Growth & Outreach</h3>
+                    </div>
+                    <i class="fa-solid fa-circle-plus text-2xl text-slate-600 rotate-icon"></i>
+                </div>
+                <div id="growth" class="hidden-detail">
+                    <ul class="space-y-3 text-slate-400 border-l-2 border-cyan-500/30 pl-6">
+                        <li><span class="text-white">Social Media Management:</span> Growth-focused daily engagement.</li>
+                        <li><span class="text-white">Digital Marketing:</span> Targeted strategies for conversion.</li>
+                        <li><span class="text-white">Strategic Cold Calling:</span> Human-centric lead generation.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#0a0f1e] py-24 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            
+            <div class="max-w-md">
+                <h2 class="text-3xl font-black mb-2">The Independent Pros.</h2>
+                <p class="text-green-400 mb-6 font-medium">Education, Non-profit organisation</p>
+                <div class="space-y-4">
+                    <a href="mailto:coustomrsuppor247@gmail.com" class="flex items-center gap-3 text-slate-300 hover:text-green-400 transition group">
+                        <span class="w-10 h-10 glass rounded-full flex items-center justify-center group-hover:bg-green-500 group-hover:text-slate-900">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        coustomrsuppor247@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-3xl w-full md:w-auto">
+                <h4 class="font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-green-400"></i> Working Hours
+                </h4>
+                <div class="space-y-2 text-slate-400">
+                    <div class="flex justify-between gap-12"><span>Sunday</span> <span class="text-white font-medium">Appointment only</span></div>
+                    <div class="flex justify-between gap-12"><span>Monday</span> <span class="text-white font-medium">Appointment only</span></div>
+                    <div class="flex justify-between gap-12"><span>Tuesday</span> <span class="text-white font-medium">Appointment only</span></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-900 text-center text-xs text-slate-600 uppercase tracking-widest">
+            &copy; 2026 THE INDEPENDENT PROS • ALL YOU NEED IS DIGITAL PUSH
+        </div>
+    </footer>
+
+    <script>
+        function toggleDetail(id, card) {
+            const detail = document.getElementById(id);
+            const icon = card.querySelector('.rotate-icon');
+            
+            // Toggle the active class
+            const isActive = detail.classList.contains('active-detail');
+            
+            // Close others (Optional: comment out if you want multiple open)
+            document.querySelectorAll('.hidden-detail').forEach(d => d.classList.remove('active-detail'));
+            document.querySelectorAll('.rotate-icon').forEach(i => i.classList.remove('active-icon'));
+
+            if (!isActive) {
+                detail.classList.add('active-detail');
+                icon.classList.add('active-icon');
+            }
+        }
+    </script>
+</body>
+</html>
