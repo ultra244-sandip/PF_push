@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Independent Pros | Digital Push</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .service-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .service-card:hover { transform: scale(1.05); background: rgba(74, 222, 128, 0.1); border-color: #4ade80; }
+        .hidden-detail { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .active-detail { max-height: 200px; margin-top: 1rem; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-white selection:bg-green-500 selection:text-black">
+
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center glass">
+        <div class="font-black text-2xl tracking-tighter">THE <span class="text-green-400"> INDEPENDENT PROS.</span></div>
+        <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+            <a href="#services" class="hover:text-green-400 transition">Expertise</a>
+            <a href="#contact" class="hover:text-green-400 transition">Connect</a>
+        </div>
+    </nav>
+
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-green-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        
+        <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight float-animation">
+            ALL YOU NEED IS<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">DIGITAL PUSH.</span>
+        </h1>
+        <p class="text-slate-400 text-lg md:text-xl max-w-xl mb-10">
+            Expert Media Production, Language Services, and Growth Strategies—powered by innovation.
+        </p>
+        <a href="#services" class="group relative px-10 py-4 font-bold overflow-hidden rounded-full border border-green-400">
+            <span class="relative z-10 group-hover:text-black transition-colors duration-300">EXPLORE SERVICES</span>
+            <div class="absolute inset-0 bg-green-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+        </a>
+    </section>
+
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Our Core Expertise</h2>
+            <p class="text-slate-500 italic">Click a service to expand details</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <div class="service-card glass p-10 rounded-3xl" onclick="toggleDetail('media')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <i class="fa-solid fa-clapperboard text-3xl text-green-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold">Media Production</h3>
+                    </div>
+                    <i class="fa-solid fa-plus text-slate-500"></i>
+                </div>
+                <div id="media" class="hidden-detail">
+                    <p class="text-slate-300 leading-relaxed">
+                        Elevate your content with professional audio and video dubbing. We specialize in voice-overs that resonate and mobile-first video editing that captures attention instantly in the social feed.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-3xl" onclick="toggleDetail('lang')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <i class="fa-solid fa-language text-3xl text-cyan-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold">Language Services</h3>
+                    </div>
+                    <i class="fa-solid fa-plus text-slate-500"></i>
+                </div>
+                <div id="lang" class="hidden-detail">
+                    <p class="text-slate-300 leading-relaxed">
+                        Bridging cultures with Expert Bengali Content Creation. Our suite includes transcription, rigorous QC/QA, and seamless translation/subtitling to make your message universal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-3xl" onclick="toggleDetail('brand')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <i class="fa-solid fa-pen-nib text-3xl text-green-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold">Brand Identity</h3>
+                    </div>
+                    <i class="fa-solid fa-plus text-slate-500"></i>
+                </div>
+                <div id="brand" class="hidden-detail">
+                    <p class="text-slate-300 leading-relaxed">
+                        Design is the silent ambassador of your brand. We craft custom logos, high-impact banners, and provide professional photo processing that ensures your visual identity is unforgettable.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card glass p-10 rounded-3xl" onclick="toggleDetail('growth')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <i class="fa-solid fa-chart-line text-3xl text-cyan-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold">Growth & Outreach</h3>
+                    </div>
+                    <i class="fa-solid fa-plus text-slate-500"></i>
+                </div>
+                <div id="growth" class="hidden-detail">
+                    <p class="text-slate-300 leading-relaxed">
+                        Strategy meets execution. From comprehensive Social Media Management to targeted Digital Marketing and Strategic Cold Calling, we push your business toward its peak potential.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact" class="py-20 border-t border-slate-800 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl font-bold mb-2">Ready for a Push?</h2>
+                <p class="text-slate-400">Let’s transform your digital presence together.</p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end">
+                <a href="mailto:coustomrsuppor247@gmail.com" class="text-xl font-medium text-green-400 hover:underline">coustomrsuppor247@gmail.com</a>
+                <p class="mt-4 px-4 py-1 rounded-full border border-slate-700 text-sm text-slate-500">Appointment Only • Sun - Tue</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDetail(id) {
+            const detail = document.getElementById(id);
+            const allDetails = document.querySelectorAll('.hidden-detail');
+            
+            allDetails.forEach(d => {
+                if(d.id !== id) d.classList.remove('active-detail');
+            });
+
+            detail.classList.toggle('active-detail');
+        }
+    </script>
+</body>
+</html>
